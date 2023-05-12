@@ -1,6 +1,11 @@
-import { StyleSheet,  View, ImageBackground } from "react-native";
+import {
+  StyleSheet,
+  View,
+  ImageBackground,
+  
+} from "react-native";
+import LoginScreen from "./Screens/LoginScreen/LoginScreen";
 import RegistrationScreen from "./Screens/RegistrationScreen/RegistrationScreen";
-
 
 export default function App() {
   return (
@@ -9,8 +14,10 @@ export default function App() {
         source={require("./assets/Image/PhotoBG.jpg")}
         style={styles.imageBG}
       >
-
-        <RegistrationScreen />
+       
+          <RegistrationScreen />
+          {/* <LoginScreen /> */}
+        
       </ImageBackground>
     </View>
   );
@@ -19,7 +26,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    
   },
   imageBG: {
     flex: 1,
@@ -27,4 +33,3 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
 });
-
