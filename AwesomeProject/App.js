@@ -2,6 +2,7 @@ import {
   StyleSheet,
   View,
   ImageBackground,
+  Dimensions,
   
 } from "react-native";
 import LoginScreen from "./Screens/LoginScreen/LoginScreen";
@@ -9,27 +10,33 @@ import RegistrationScreen from "./Screens/RegistrationScreen/RegistrationScreen"
 
 export default function App() {
   return (
-    <View style={styles.container}>
+    <>
       <ImageBackground
         source={require("./assets/Image/PhotoBG.jpg")}
         style={styles.imageBG}
-      >
+      ></ImageBackground>
+        <View style={styles.container}>
        
           <RegistrationScreen />
           {/* <LoginScreen /> */}
-        
-      </ImageBackground>
-    </View>
+          </View>
+      
+      </>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
+   
     flex: 1,
+  
   },
   imageBG: {
+    resizeMode: 'cover',
+    position: 'absolute',
     flex: 1,
-    resizeMode: "cover",
-    justifyContent: "center",
+    width: Dimensions.get('window').width,
+    height: Dimensions.get('window').height,
+    zIndex: -1,
   },
 });

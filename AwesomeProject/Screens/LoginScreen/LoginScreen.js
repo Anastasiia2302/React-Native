@@ -4,16 +4,15 @@ import {
   TextInput,
   TouchableOpacity,
   Text,
-  Image,
   KeyboardAvoidingView,
   Platform,
 } from "react-native";
 
 export default LoginScreen = () => {
   return (
-    <KeyboardAvoidingView
-      behavior={Platform.OS === "ios" ? "padding" : "height"}
-    >
+    // <KeyboardAvoidingView
+    //   behavior={Platform.OS === "ios" ? "padding" : "height"}
+    // >
     <View style={styles.form}>
       <View style={styles.formContainer}>
         <Text style={styles.title}>Войти</Text>
@@ -39,7 +38,7 @@ export default LoginScreen = () => {
         <Text style={styles.textSingUp}>Нет аккаунта? Зарегистрироваться</Text>
       </View>
     </View>
-    </KeyboardAvoidingView>
+    // </KeyboardAvoidingView>
   );
 };
 const styles = StyleSheet.create({

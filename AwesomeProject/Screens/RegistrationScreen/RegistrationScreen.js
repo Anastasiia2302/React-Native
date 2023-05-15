@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   View,
   StyleSheet,
@@ -60,10 +61,10 @@ export default RegistrationScreen = () => {
 };
 const styles = StyleSheet.create({
   form: {
-    flex: 1,
-    marginTop: 200,
-    marginBottom: 20,
-    height: 549,
+    position: "relative",
+    marginTop: 260,
+
+   height:549,
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
     backgroundColor: "#FFFFFF",
