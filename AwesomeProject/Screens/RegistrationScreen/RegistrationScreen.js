@@ -26,6 +26,7 @@ const RegistrationScreen = () => {
     setIsShowKeyboard(false);
     Keyboard.dismiss()
     console.log(state);
+    setState(initialState)
   };
   
   return (
@@ -49,6 +50,7 @@ const RegistrationScreen = () => {
               style={styles.input}
               placeholder="Логин"
               placeholderTextColor="#BDBDBD"
+              value={state.login}
               onFocus={() => {
                 setIsShowKeyboard(true);
               }}
@@ -62,6 +64,7 @@ const RegistrationScreen = () => {
               style={styles.input}
               placeholder="Адрес электронной почты"
               placeholderTextColor="#BDBDBD"
+              value={state.email}
               onFocus={() => {
                 setIsShowKeyboard(true);
               }}
@@ -76,6 +79,7 @@ const RegistrationScreen = () => {
               secureTextEntry={true}
               placeholder="Пароль"
               placeholderTextColor="#BDBDBD"
+              value={state.password}
               onFocus={() => {
                 setIsShowKeyboard(true);
               }}

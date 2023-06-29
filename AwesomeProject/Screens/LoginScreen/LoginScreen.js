@@ -23,6 +23,7 @@ const LoginScreen = () => {
     setIsShowKeyboard(false);
     Keyboard.dismiss()
     console.log(state);
+    setState(initialState)
   };
 
   return (
@@ -37,6 +38,7 @@ const LoginScreen = () => {
               style={styles.input}
               placeholder="Адрес электронной почты"
               placeholderTextColor="#BDBDBD"
+              value={state.email}
               onFocus={() => {
                 setIsShowKeyboard(true);
               }}
@@ -51,6 +53,7 @@ const LoginScreen = () => {
               secureTextEntry={true}
               placeholder="Пароль"
               placeholderTextColor="#BDBDBD"
+              value={state.password}
               onFocus={() => {
                 setIsShowKeyboard(true);
               }}
