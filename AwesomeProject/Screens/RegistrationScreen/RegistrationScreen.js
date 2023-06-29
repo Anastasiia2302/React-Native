@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import {
   View,
   StyleSheet,
@@ -8,14 +8,31 @@ import {
   Image,
   KeyboardAvoidingView,
   Platform,
+  Keyboard,
+  
 } from "react-native";
 
-export default RegistrationScreen = () => {
+const initialState = {
+  login: "",
+  email: "",
+  password: "",
+};
+
+const RegistrationScreen = () => {
+  const [isShowKeyboard, setIsShowKeyboard] = useState(false);
+  const [state, setState] = useState(initialState);
+
+  const keyboardHide = () => {
+    setIsShowKeyboard(false);
+    Keyboard.dismiss()
+    console.log(state);
+  };
+  
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
     >
-      <View style={styles.form}>
+      <View style={{ ...styles.form, marginBottom: isShowKeyboard ? 20 : 40 }}>
         <View style={styles.box}>
           <Image style={styles.avatar} />
           <View style={styles.boxAddAvatar}>
@@ -32,6 +49,12 @@ export default RegistrationScreen = () => {
               style={styles.input}
               placeholder="Логин"
               placeholderTextColor="#BDBDBD"
+              onFocus={() => {
+                setIsShowKeyboard(true);
+              }}
+              onChangeText={(value) =>
+                setState((prevState) => ({ ...prevState, login: value }))
+              }
             ></TextInput>
           </View>
           <View>
@@ -39,6 +62,12 @@ export default RegistrationScreen = () => {
               style={styles.input}
               placeholder="Адрес электронной почты"
               placeholderTextColor="#BDBDBD"
+              onFocus={() => {
+                setIsShowKeyboard(true);
+              }}
+              onChangeText={(value) =>
+                setState((prevState) => ({ ...prevState, email: value }))
+              }
             ></TextInput>
           </View>
           <View>
@@ -47,10 +76,20 @@ export default RegistrationScreen = () => {
               secureTextEntry={true}
               placeholder="Пароль"
               placeholderTextColor="#BDBDBD"
+              onFocus={() => {
+                setIsShowKeyboard(true);
+              }}
+              onChangeText={(value) =>
+                setState((prevState) => ({ ...prevState, password: value }))
+              }
             ></TextInput>
           </View>
 
-          <TouchableOpacity style={styles.button}>
+          <TouchableOpacity
+            style={styles.button}
+            activeOpacity={0.8}
+            onPress={keyboardHide}
+          >
             <Text style={styles.textBtn}>Зарегистрироваться</Text>
           </TouchableOpacity>
           <Text style={styles.textSingUp}>Уже есть аккаунт? Войти</Text>
@@ -61,10 +100,8 @@ export default RegistrationScreen = () => {
 };
 const styles = StyleSheet.create({
   form: {
-    position: "relative",
     marginTop: 260,
-
-   height:549,
+    height: 549,
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
     backgroundColor: "#FFFFFF",
@@ -134,3 +171,5 @@ const styles = StyleSheet.create({
   },
   addAvatar: {},
 });
+
+export default RegistrationScreen;

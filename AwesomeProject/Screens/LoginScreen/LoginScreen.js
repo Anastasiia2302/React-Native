@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import {
   View,
   StyleSheet,
@@ -6,39 +7,72 @@ import {
   Text,
   KeyboardAvoidingView,
   Platform,
+  Keyboard
 } from "react-native";
 
-export default LoginScreen = () => {
-  return (
-    // <KeyboardAvoidingView
-    //   behavior={Platform.OS === "ios" ? "padding" : "height"}
-    // >
-    <View style={styles.form}>
-      <View style={styles.formContainer}>
-        <Text style={styles.title}>Войти</Text>
-        <View>
-          <TextInput
-            style={styles.input}
-            placeholder="Адрес электронной почты"
-            placeholderTextColor="#BDBDBD"
-          ></TextInput>
-        </View>
-        <View>
-          <TextInput
-            style={styles.input}
-            secureTextEntry={true}
-            placeholder="Пароль"
-            placeholderTextColor="#BDBDBD"
-          ></TextInput>
-        </View>
+const initialState = {
+  email: "",
+  password: "",
+};
 
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.textBtn}>Войти</Text>
-        </TouchableOpacity>
-        <Text style={styles.textSingUp}>Нет аккаунта? Зарегистрироваться</Text>
+const LoginScreen = () => {
+  const [isShowKeyboard, setIsShowKeyboard] = useState(false);
+  const [state, setState] = useState(initialState);
+
+  const keyboardHide = () => {
+    setIsShowKeyboard(false);
+    Keyboard.dismiss()
+    console.log(state);
+  };
+
+  return (
+    <KeyboardAvoidingView
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+    >
+      <View style={{ ...styles.form, marginBottom: isShowKeyboard ? 20 : 40 }}>
+        <View style={styles.formContainer}>
+          <Text style={styles.title}>Войти</Text>
+          <View>
+            <TextInput
+              style={styles.input}
+              placeholder="Адрес электронной почты"
+              placeholderTextColor="#BDBDBD"
+              onFocus={() => {
+                setIsShowKeyboard(true);
+              }}
+              onChangeText={(value) =>
+                setState((prevState) => ({ ...prevState, email: value }))
+              }
+            ></TextInput>
+          </View>
+          <View>
+            <TextInput
+              style={styles.input}
+              secureTextEntry={true}
+              placeholder="Пароль"
+              placeholderTextColor="#BDBDBD"
+              onFocus={() => {
+                setIsShowKeyboard(true);
+              }}
+              onChangeText={(value) =>
+                setState((prevState) => ({ ...prevState, password: value }))
+              }
+            ></TextInput>
+          </View>
+
+          <TouchableOpacity
+            style={styles.button}
+            activeOpacity={0.8}
+            onPress={keyboardHide}
+          >
+            <Text style={styles.textBtn}>Войти</Text>
+          </TouchableOpacity>
+          <Text style={styles.textSingUp}>
+            Нет аккаунта? Зарегистрироваться
+          </Text>
+        </View>
       </View>
-    </View>
-    // </KeyboardAvoidingView>
+    </KeyboardAvoidingView>
   );
 };
 const styles = StyleSheet.create({
@@ -51,8 +85,6 @@ const styles = StyleSheet.create({
   },
   formContainer: {
     marginHorizontal: 16,
-   
-    
   },
 
   title: {
@@ -92,3 +124,5 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
 });
+
+export default LoginScreen;
