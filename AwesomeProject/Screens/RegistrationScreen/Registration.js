@@ -18,7 +18,7 @@ const initialState = {
   password: "",
 };
 
-const RegistrationScreen = () => {
+const Registration = () => {
   const [isShowKeyboard, setIsShowKeyboard] = useState(false);
   const [state, setState] = useState(initialState);
 
@@ -176,4 +176,4 @@ const styles = StyleSheet.create({
   addAvatar: {},
 });
 
-export default RegistrationScreen;
+export default Registration;

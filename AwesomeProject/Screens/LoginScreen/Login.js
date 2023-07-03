@@ -15,7 +15,7 @@ const initialState = {
   password: "",
 };
 
-const LoginScreen = () => {
+const Login = () => {
   const [isShowKeyboard, setIsShowKeyboard] = useState(false);
   const [state, setState] = useState(initialState);
 
@@ -128,4 +128,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default LoginScreen;
+export default Login;
