@@ -1,11 +1,11 @@
 
 import { View, StyleSheet, Text, TouchableOpacity, Image } from "react-native";
 
-const Profile = ({ navigation }) => {
+const Comments = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.headerContainer}>
-        <Text style={styles.title}>Профиль</Text>
+        <Text style={styles.title}>Коментарии</Text>
         <TouchableOpacity onPress={() => navigation.navigate("DefaultScreenPosts")}>
           <Image
             style={styles.iconArrow}
@@ -40,4 +40,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Profile;
+export default Comments;

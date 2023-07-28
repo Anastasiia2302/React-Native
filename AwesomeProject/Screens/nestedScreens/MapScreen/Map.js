@@ -1,18 +1,33 @@
-
 import { View, StyleSheet, Text, TouchableOpacity, Image } from "react-native";
+import MapView, { Marker } from "react-native-maps";
 
-const Profile = ({ navigation }) => {
+const Map = ({ navigation, route }) => {
+  const latitude = route.params?.latitude || 0;
+  const longitude = route.params?.longitude || 0;
   return (
     <View style={styles.container}>
       <View style={styles.headerContainer}>
-        <Text style={styles.title}>Профиль</Text>
-        <TouchableOpacity onPress={() => navigation.navigate("DefaultScreenPosts")}>
+        <Text style={styles.title}>Карта</Text>
+        <TouchableOpacity
+          onPress={() => navigation.navigate("DefaultScreenPosts")}
+        >
           <Image
             style={styles.iconArrow}
             source={require("../../../assets/Image/arrow-left.png")}
           />
         </TouchableOpacity>
       </View>
+      <MapView
+        style={{ flex: 1 }}
+        initialRegion={{
+          latitude: latitude,
+          longitude: longitude,
+          latitudeDelta: 0.001,
+          longitudeDelta: 0.006,
+        }}
+      >
+        <Marker coordinate={{ latitude: latitude, longitude: longitude }} />
+      </MapView>
     </View>
   );
 };
@@ -40,4 +55,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Profile;
+export default Map;

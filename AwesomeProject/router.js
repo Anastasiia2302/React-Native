@@ -7,7 +7,9 @@ import LoginScreen from "./Screens/LoginScreen/Login";
 import RegistrationScreen from "./Screens/RegistrationScreen/Registration";
 import HomeScreen from "./Screens/PostsScreen/HomeScreen/Home";
 import CreatePostsScreen from "./Screens/PostsScreen/CreatePostsScreen/CreatePosts";
-import CommentsScreen from "./Screens/PostsScreen/CommentsScreen/Comments";
+// import CommentsScreen from "./Screens/PostsScreen/CommentsScreen/Comments";
+// import MapScreen from "./Screens/PostsScreen/MapScreen/Map";
+import ProfileScreen from "./Screens/PostsScreen/ProfileScreen/Profile";
 
 const AuthStack = createStackNavigator();
 const MainTab = createBottomTabNavigator();
@@ -71,9 +73,10 @@ export const useRoute = (isAuth) => {
             <Image source={require("./assets/Image/user.png")} />
           ),
         }}
-        name="Comments"
-        component={CommentsScreen}
+        name="Profile"
+        component={ProfileScreen}
       />
     </MainTab.Navigator>
+    
   );
 };
