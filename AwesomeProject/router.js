@@ -7,18 +7,15 @@ import LoginScreen from "./Screens/LoginScreen/Login";
 import RegistrationScreen from "./Screens/RegistrationScreen/Registration";
 import HomeScreen from "./Screens/PostsScreen/HomeScreen/Home";
 import CreatePostsScreen from "./Screens/PostsScreen/CreatePostsScreen/CreatePosts";
-// import CommentsScreen from "./Screens/PostsScreen/CommentsScreen/Comments";
-// import MapScreen from "./Screens/PostsScreen/MapScreen/Map";
+
 import ProfileScreen from "./Screens/PostsScreen/ProfileScreen/Profile";
 
 const AuthStack = createStackNavigator();
 const MainTab = createBottomTabNavigator();
 
-
-
 export const useRoute = (isAuth) => {
   const [isShowKeyboard, setIsShowKeyboard] = useState(false);
-  
+
   if (!isAuth) {
     return (
       <AuthStack.Navigator>
@@ -47,15 +44,12 @@ export const useRoute = (isAuth) => {
           tabBarIcon: () => (
             <Image source={require("./assets/Image/grid.png")} />
           ),
-          
         }}
-        
         name="Home"
         component={HomeScreen}
       />
       <MainTab.Screen
         options={{
-         
           tabBarStyle: { display: "none" },
           headerShown: false,
           tabBarIcon: () => (
@@ -77,6 +71,5 @@ export const useRoute = (isAuth) => {
         component={ProfileScreen}
       />
     </MainTab.Navigator>
-    
   );
 };

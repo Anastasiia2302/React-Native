@@ -13,6 +13,8 @@ import {
   Keyboard,
   Dimensions,
 } from "react-native";
+import { useDispatch } from "react-redux";
+import {authSignUpUser} from "../../redux/auth/authOperations"
 
 const initialState = {
   login: "",
@@ -23,11 +25,11 @@ const initialState = {
 const Registration = ({ navigation }) => {
   const [isShowKeyboard, setIsShowKeyboard] = useState(false);
   const [state, setState] = useState(initialState);
-
+  const dispatch = useDispatch();
   const keyboardHide = () => {
     setIsShowKeyboard(false);
     Keyboard.dismiss();
-    console.log(state);
+    dispatch(authSignUpUser(state));
     setState(initialState);
   };
 
