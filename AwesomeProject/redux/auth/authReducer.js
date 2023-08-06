@@ -12,3 +12,4 @@ reducers: {
 
 }
 })
+export default authSlice.reducer;
