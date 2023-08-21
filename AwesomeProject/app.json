@@ -13,7 +13,9 @@
       "backgroundColor": "#ffffff"
     },
     "jsEngine": "jsc",
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "jsEngine": "jsc",
       "supportsTablet": true
@@ -23,10 +25,16 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.anastasiiareact.goit_native_expo"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "5b3ecc02-d7bb-44e1-9015-032cc0f23ec2"
+      }
     }
   }
 }
